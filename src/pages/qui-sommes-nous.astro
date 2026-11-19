@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../config';
+---
+
+<Base title="Qui sommes-nous" description={`Présentation de ${SITE.title}.`}>
+  <h1>Qui sommes-nous ?</h1>
+  <div class="prose">
+    <p>
+      {SITE.title} est une organisation syndicale indépendante, réformiste et solidaire. Notre section
+      rassemble des salariés qui veulent agir ensemble pour améliorer leurs conditions de travail.
+    </p>
+    <h2>Nos valeurs</h2>
+    <ul>
+      <li><strong>Indépendance</strong> vis-à-vis des partis politiques et des employeurs.</li>
+      <li><strong>Dialogue</strong> : nous privilégions la négociation pour obtenir des résultats concrets.</li>
+      <li><strong>Solidarité</strong> entre tous les salariés.</li>
+      <li><strong>Laïcité</strong> et respect de chacun.</li>
+    </ul>
+    <h2>Notre équipe</h2>
+    <p>Présentez ici les membres du bureau et les représentants (nom, rôle, contact).</p>
+  </div>
+</Base>

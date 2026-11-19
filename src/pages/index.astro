@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import NewsList from '../components/NewsList.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { SITE, url } from '../config';
+import { getActualites } from '../data/actualites';
+
+const latest = (await getActualites()).slice(0, 3);
+---
+
+<Base>
+  <section class="hero">
+    <h1>{SITE.title}</h1>
+    <p class="hero__lead">Défendre, informer et accompagner chaque salarié.</p>
+    <div class="hero__actions">
+      <a class="button" href={url('adherer/')}>Adhérer</a>
+      <a class="button button--ghost" href={url('contact/')}>Nous contacter</a>
+    </div>
+  </section>
+
+  <section aria-labelledby="missions-title">
+    <h2 id="missions-title">Nos missions</h2>
+    <ul class="cards">
+      <li class="card">
+        <h3>Défendre</h3>
+        <p>Nous représentons les salariés et défendons leurs droits, individuellement et collectivement.</p>
+      </li>
+      <li class="card">
+        <h3>Informer</h3>
+        <p>Nous partageons l’actualité sociale, les accords et les documents utiles.</p>
+      </li>
+      <li class="card">
+        <h3>Accompagner</h3>
+        <p>Nous vous conseillons et vous accompagnons dans vos démarches.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="news-title">
+    <div class="section-head">
+      <h2 id="news-title">Dernières actualités</h2>
+      <a href={url('actualites/')}>Toutes les actualités →</a>
+    </div>
+    <NewsList items={latest} />
+  </section>
+
+  <section class="band" aria-labelledby="members-title">
+    <h2 id="members-title">Espace adhérents</h2>
+    <p>
+      Les adhérents accèdent aux documents avec leur compte Google et reçoivent un email à chaque
+      nouveau document.
+    </p>
+    <a class="button" href={url('documents/')}>Accéder aux documents</a>
+  </section>
+
+  <section aria-labelledby="social-title">
+    <h2 id="social-title">Suivez-nous</h2>
+    <SocialLinks size="large" />
+  </section>
+</Base>

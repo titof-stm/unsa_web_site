@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { documentFolders } from '../data/documents';
+import { SITE, url } from '../config';
+---
+
+<Base title="Documents" description="Espace documents réservé aux adhérents.">
+  <h1>Espace documents</h1>
+  <p class="note">
+    Les documents sont stockés dans Google Drive et réservés aux adhérents. Google vous demandera de
+    vous connecter avec le compte Google que vous nous avez communiqué. Vous recevez aussi un email à
+    chaque nouveau document.
+  </p>
+  <ul class="cards">
+    {
+      documentFolders.map((folder) => (
+        <li class="card">
+          <h2>{folder.title}</h2>
+          <p>{folder.description}</p>
+          <a class="button" href={folder.url} target="_blank" rel="noopener noreferrer">
+            Ouvrir dans Google Drive
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <h2>Vous n’avez pas accès ?</h2>
+  <ul class="prose">
+    <li>Vérifiez que vous êtes connecté avec le <strong>bon compte Google</strong>.</li>
+    <li>
+      Sinon, écrivez-nous à <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> en indiquant
+      l’adresse de votre compte Google. Nous vous ajouterons au groupe des adhérents.
+    </li>
+    <li>Pas encore adhérent ? <a href={url('adherer/')}>Adhérez ici</a>.</li>
+  </ul>
+</Base>

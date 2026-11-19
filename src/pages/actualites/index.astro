@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import NewsList from '../../components/NewsList.astro';
+import { getActualites } from '../../data/actualites';
+
+const items = await getActualites();
+---
+
+<Base title="Actualités" description="Les dernières actualités.">
+  <h1>Actualités</h1>
+  {items.length > 0 ? <NewsList items={items} /> : <p>Aucune actualité pour le moment.</p>}
+</Base>

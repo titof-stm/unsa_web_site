@@ -1,0 +1,49 @@
+---
+import { siFacebook, siInstagram, siWhatsapp, siX, siYoutube } from 'simple-icons';
+import { SOCIALS, type SocialNetwork } from '../config';
+
+interface Props {
+  size?: 'small' | 'large';
+}
+
+const { size = 'small' } = Astro.props;
+
+const icons: Partial<Record<SocialNetwork, string>> = {
+  facebook: siFacebook.path,
+  x: siX.path,
+  instagram: siInstagram.path,
+  youtube: siYoutube.path,
+  whatsapp: siWhatsapp.path,
+};
+---
+
+<ul class:list={['socials', `socials--${size}`]}>
+  {
+    SOCIALS.map((social) => (
+      <li>
+        <a
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${social.label} (nouvel onglet)`}
+          title={social.label}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            {icons[social.network] ? (
+              <path d={icons[social.network]} fill="currentColor" />
+            ) : (
+              <>
+                {/* LinkedIn is not distributed by simple-icons: generic "in" badge. */}
+                <rect x="1" y="1" width="22" height="22" rx="4" fill="currentColor" />
+                <text x="12" y="17" text-anchor="middle" font-size="13" font-weight="700" font-family="Arial, sans-serif" class="socials__badge-text">
+                  in
+                </text>
+              </>
+            )}
+          </svg>
+          {size === 'large' && <span>{social.label}</span>}
+        </a>
+      </li>
+    ))
+  }
+</ul>
