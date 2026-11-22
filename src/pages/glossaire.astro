@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import { GLOSSARY } from '../data/livret';
+---
+
+<Base title="Glossaire" description="Les sigles et termes du vocabulaire syndical expliqués simplement.">
+  <h1 class="page-title">Glossaire syndical</h1>
+  <p class="page-lead">Les sigles et termes que vous rencontrerez à l’UNSA, expliqués simplement.</p>
+  {
+    Object.entries(GLOSSARY).map(([group, entries]) => (
+      <section>
+        <h2>{group}</h2>
+        <dl class="defs">
+          {entries.map((entry) => (
+            <div class="defs__item">
+              <dt>{entry.term}</dt>
+              <dd>
+                <strong>{entry.name}</strong>
+                <small>{entry.text}</small>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    ))
+  }
+</Base>

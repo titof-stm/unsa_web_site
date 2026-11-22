@@ -1,23 +1,170 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE } from '../config';
+import { SITE, url } from '../config';
+import { FEDERAL_FIGURES } from '../data/livret';
 ---
 
-<Base title="Qui sommes-nous" description={`Présentation de ${SITE.title}.`}>
-  <h1>Qui sommes-nous ?</h1>
-  <div class="prose">
-    <p>
-      {SITE.title} est une organisation syndicale indépendante, réformiste et solidaire. Notre section
-      rassemble des salariés qui veulent agir ensemble pour améliorer leurs conditions de travail.
-    </p>
-    <h2>Nos valeurs</h2>
-    <ul>
-      <li><strong>Indépendance</strong> vis-à-vis des partis politiques et des employeurs.</li>
-      <li><strong>Dialogue</strong> : nous privilégions la négociation pour obtenir des résultats concrets.</li>
-      <li><strong>Solidarité</strong> entre tous les salariés.</li>
-      <li><strong>Laïcité</strong> et respect de chacun.</li>
+<Base
+  title="Qui sommes-nous"
+  description={`Présentation de ${SITE.title} : l’UNSA fédérale, notre syndicat d’entreprise autonome et son organisation interne.`}
+>
+  <h1 class="page-title">Qui sommes-nous ?</h1>
+  <p class="page-lead">
+    {SITE.title} est un syndicat d’entreprise autonome, membre de la famille UNSA, qui rassemble des
+    salariés engagés pour améliorer les conditions de travail de tous.
+  </p>
+
+  <section aria-labelledby="federale-title">
+    <h2 id="federale-title">L’UNSA fédérale</h2>
+    <div class="split">
+      <div>
+        <p>
+          L’<strong>U</strong>nion <strong>N</strong>ationale des <strong>S</strong>yndicats <strong>A</strong>utonomes, créée en 1993, est la 5<sup>e</sup> force syndicale française en
+          nombre d’adhérents.
+        </p>
+        <ul>
+          <li>
+            <strong>Autonomie</strong> : 22 fédérations et plus de 1 000 syndicats regroupant tous les
+            secteurs d’activité, du privé comme du public.
+          </li>
+          <li>
+            <strong>Engagement</strong> : une organisation utile et efficace, présente chez Air France,
+            SNCF, BNP Paribas, Lidl, Dassault, Carrefour, Total, Safran, La Poste, Décathlon, Ikea,
+            Thales, Renault, Hermès, Macif…
+          </li>
+          <li>
+            <strong>Méthode</strong> : agir pour obtenir. L’UNSA est premier syndicat chez Caisse
+            d’épargne, IBM, Etam, SFR, Canal+, Décathlon, ainsi que dans plusieurs branches
+            (cabinets dentaires, commerce d’articles de sport, expertises industrielles…).
+          </li>
+        </ul>
+      </div>
+      <figure class="figure">
+        <img
+          src={url('img/ensemble.webp')}
+          alt="Tous ensemble dans la rue"
+          width="561"
+          height="449"
+          loading="lazy"
+        />
+      </figure>
+    </div>
+    <ul class="stats">
+      {
+        FEDERAL_FIGURES.map((figure) => (
+          <li class="stat">
+            <span class="stat__value">{figure.value}</span>
+            <span class="stat__label">{figure.label}</span>
+          </li>
+        ))
+      }
     </ul>
-    <h2>Notre équipe</h2>
-    <p>Présentez ici les membres du bureau et les représentants (nom, rôle, contact).</p>
-  </div>
+  </section>
+
+  <section aria-labelledby="st-title">
+    <h2 id="st-title">L’UNSA STMicroelectronics</h2>
+    <div class="split split--sites">
+      <div>
+        <ol class="org" aria-label="Niveaux d’organisation de l’UNSA">
+          <li>
+            <strong>Confédérale — UNSA Nationale</strong> Organe délibérant chargé de définir les grandes orientations.
+          </li>
+          <li>
+            <strong>Fédérale — UNSA Industrie &amp; Construction</strong> L’UNSA est organisée en pôles professionnels : nous appartenons au pôle Industrie et
+            construction.
+          </li>
+          <li>
+            <strong>Entreprise — UNSA STMicroelectronics</strong> Une association syndicale d’entreprise.
+          </li>
+        </ol>
+        <div class="callout">
+          <p>
+            L’UNSA STMicroelectronics est un syndicat d’entreprise <strong>autonome</strong> : nous
+            prenons nos décisions sans dépendre de la fédération ou de la confédération, tout en
+            bénéficiant de leur soutien (juridique, conseil, communication…).
+          </p>
+        </div>
+      </div>
+      <figure class="figure figure--navy">
+        <img
+          src={url('img/sites.webp')}
+          alt="Les sites de France représentés par l’UNSA STMicroelectronics"
+          width="294"
+          height="350"
+          loading="lazy"
+        />
+        <figcaption>Les sites de France représentés par l’UNSA</figcaption>
+      </figure>
+    </div>
+    <h3>Nos sections syndicales</h3>
+    <p>
+      L’UNSA STMicroelectronics dispose de sections syndicales sur les sites en France. Une section est
+      dite <strong>représentative</strong> lorsqu’elle a atteint 10 % des suffrages lors des dernières
+      élections ; elle est sinon non représentative.
+    </p>
+    <ul>
+      <li>Le site de Toulon est rattaché au site de Rousset.</li>
+      <li>Le site de Toulouse est rattaché au site de Crolles.</li>
+      <li>Le site du Bourget-du-Lac est rattaché au site de Grenoble.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="orga-title">
+    <h2 id="orga-title">L’organisation interne</h2>
+    <p>
+      Lors de chaque assemblée générale ordinaire, le conseil syndical et le bureau sont constitués.
+    </p>
+    <ul class="cards">
+      <li class="card">
+        <h3>Le conseil syndical</h3>
+        <p>
+          Il est constitué de militants de chaque section. Leur nombre dépend du nombre d’adhérents
+          de la section.
+        </p>
+      </li>
+      <li class="card">
+        <h3>Le bureau</h3>
+        <p>Il compte 4 membres issus du conseil syndical :</p>
+        <ul>
+          <li>Secrétaire</li>
+          <li>Secrétaire adjoint</li>
+          <li>Trésorier</li>
+          <li>Trésorier adjoint</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="values-title">
+    <h2 id="values-title">Nos valeurs</h2>
+    <ul class="cards">
+      <li class="card">
+        <h3>Autonome et indépendant</h3>
+        <p>L’UNSA n’est liée à aucun parti politique. Nos positions sont guidées uniquement par l’intérêt des salariés.</p>
+      </li>
+      <li class="card">
+        <h3>Dialogue et résultats</h3>
+        <p>
+          Nous privilégions la négociation pour obtenir des avancées concrètes. Nous savons nous
+          opposer lorsque c’est nécessaire, mais cherchons avant tout des solutions utiles.
+        </p>
+      </li>
+      <li class="card">
+        <h3>Un projet collectif</h3>
+        <p>Une équipe engagée de salariés de différents métiers, générations et parcours.</p>
+      </li>
+    </ul>
+    <div class="callout">
+      <p><strong>Notre conviction :</strong> s’informer, comprendre, proposer, agir. C’est ensemble que nous faisons progresser notre entreprise et les droits des salariés.</p>
+    </div>
+  </section>
+
+  <section class="band band--navy" aria-labelledby="join-title">
+    <h2 id="join-title">Agir ensemble pour changer ton quotidien</h2>
+    <p>Chaque adhésion renforce notre capacité à construire des avancées pour tous.</p>
+    <div class="hero__actions">
+      <a class="button button--light" href={url('adherer/')}>Adhérer</a>
+      <a class="button button--outline-light" href={url('contact/')}>Nous contacter</a>
+    </div>
+  </section>
 </Base>

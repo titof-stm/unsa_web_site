@@ -1,8 +1,11 @@
 // Central site settings: edit this file to change the name, contact details, menu and social links.
 
 export const SITE = {
-  title: 'UNSA',
-  description: 'UNSA — défendre, informer et accompagner les salariés.',
+  title: 'UNSA STMicroelectronics',
+  shortTitle: 'UNSA',
+  tagline: 'Agir ensemble pour changer ton quotidien',
+  description:
+    'UNSA STMicroelectronics — syndicat autonome d’entreprise : défendre, informer et accompagner les salariés de ST en France.',
   lang: 'fr',
   contactEmail: 'contact@example.com',
   phone: '01 23 45 67 89',
@@ -19,6 +22,8 @@ export interface NavItem {
 export const NAV: readonly NavItem[] = [
   { label: 'Accueil', path: '' },
   { label: 'Qui sommes-nous', path: 'qui-sommes-nous/' },
+  { label: 'Représentation', path: 'representation/' },
+  { label: 'S’engager', path: 'sengager/' },
   { label: 'Actualités', path: 'actualites/' },
   { label: 'Documents', path: 'documents/' },
   { label: 'Adhérer', path: 'adherer/' },

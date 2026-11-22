@@ -6,16 +6,21 @@ const subject = encodeURIComponent(`Demande d’adhésion — ${SITE.title}`);
 ---
 
 <Base title="Adhérer" description={`Rejoignez ${SITE.title}.`}>
-  <h1>Adhérer</h1>
+  <h1 class="page-title">Adhérer</h1>
   <div class="prose">
     <p>Rejoindre {SITE.title}, c’est être informé, conseillé et défendu.</p>
     <h2>Pourquoi adhérer ?</h2>
     <ul>
-      <li>Un accompagnement personnalisé en cas de difficulté.</li>
+      <li>Un accompagnement personnalisé et une aide juridique en cas de difficulté.</li>
+      <li>Plus d’informations sur la vie de l’entreprise et de l’UNSA.</li>
+      <li>Le droit de participer aux discussions et aux votes lors des assemblées générales.</li>
       <li>L’accès à l’espace documents réservé aux adhérents.</li>
-      <li>Une information régulière sur vos droits.</li>
       <li>Une cotisation déductible à 66 % de l’impôt sur le revenu (crédit d’impôt).</li>
     </ul>
+    <p>
+      Pour aller plus loin, découvrez <a href={url('sengager/')}>comment devenir militant ou
+      représentant</a>.
+    </p>
     <h2>Comment adhérer ?</h2>
     <ol>
       <li>Remplissez le formulaire d’adhésion ou écrivez-nous.</li>

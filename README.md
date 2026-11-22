@@ -176,7 +176,7 @@ Tout est dans [src/config.ts](src/config.ts) :
 | Contact | [src/pages/contact.astro](src/pages/contact.astro) |
 | Mentions légales | [src/pages/mentions-legales.astro](src/pages/mentions-legales.astro) (**à compléter** : directeur de la publication) |
 | Couleurs, mise en page | [src/styles/global.css](src/styles/global.css) (couleur principale : `--accent`) |
-| Logo / icône | [public/favicon.svg](public/favicon.svg) |
+| Logo / icône | [public/img/logo.png](public/img/logo.png) |
 
 Modifiez uniquement le texte entre les balises (`<p>…</p>`, `<h2>…</h2>`, etc.). Pour les images,
 déposez-les dans `public/` et référencez-les sans adresse externe (voir [Règles de sécurité](#10-règles-de-sécurité)).

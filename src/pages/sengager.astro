@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../config';
+import { ENGAGEMENT_LEVELS } from '../data/livret';
+---
+
+<Base
+  title="S’engager"
+  description="Les quatre niveaux d’implication à l’UNSA, se présenter sur une liste, formation syndicale, crédit d’heures et déplacements."
+>
+  <h1 class="page-title">S’engager à l’UNSA</h1>
+  <p class="page-lead">
+    Sympathisant, adhérent, militant ou représentant : chacun peut trouver sa place et contribuer à la
+    force collective.
+  </p>
+
+  <section aria-labelledby="levels-title">
+    <h2 id="levels-title">Les 4 niveaux d’implication</h2>
+    <ol class="steps steps--levels">
+      {
+        ENGAGEMENT_LEVELS.map((level) => (
+          <li>
+            <h3>{level.level}</h3>
+            <p><span class="tag">{level.role}</span></p>
+            <ul>
+              {level.points.map((point) => <li>{point}</li>)}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section aria-labelledby="list-title">
+    <h2 id="list-title">Se présenter sur une liste électorale UNSA</h2>
+    <p>
+      Pour être élu au CSE ou obtenir un mandat syndical, il faut avant tout être <strong>adhérent</strong> et se présenter sur des listes électorales.
+    </p>
+    <ol class="steps">
+      <li>Rapprochez-vous de votre section pour vous inscrire sur les listes des prochaines élections professionnelles. Les listes respectent la parité et l’alternance femme/homme.</li>
+      <li>Vous participez à la campagne électorale en définissant les informations à donner aux salariés afin de faire gagner l’UNSA.</li>
+      <li>Proclamation des résultats : il faut atteindre 10 % des suffrages exprimés.</li>
+      <li>Les sections représentatives proposent les DS et le RS ; le DSC nomme les DS et le RS.</li>
+      <li>Vous obtenez un poste d’élu ou de mandaté : vous pouvez vous former en interne ou demander des formations.</li>
+      <li>Un entretien quadripartite de prise de mandat est organisé (salarié, RH, manager, représentant UNSA).</li>
+      <li>Vous devenez un <strong>salarié protégé</strong>.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="training-title">
+    <h2 id="training-title">Formation syndicale et crédit d’heures</h2>
+    <div class="split">
+      <div>
+        <h3>Congé de formation économique, sociale, environnementale et syndicale</h3>
+        <ul>
+          <li>Jusqu’à <strong>12 jours par an</strong> (18 jours pour les animateurs de stages et les salariés appelés à exercer des responsabilités syndicales).</li>
+          <li>Il peut être pris en plusieurs fois, par fraction d’au moins une demi-journée.</li>
+          <li>Il n’est pas imputé sur les congés payés et compte comme du temps de travail effectif (congés payés, prestations sociales et familiales, ancienneté).</li>
+          <li>Le salarié a droit au <strong>maintien total de son salaire</strong>.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Le crédit d’heures</h3>
+        <p>
+          Les heures de délégation permettent aux représentants du personnel et aux représentants
+          syndicaux d’exercer leurs missions dans le cadre du dialogue social. Prévues par le Code du
+          travail et les accords d’entreprise, elles constituent du <strong>temps de travail</strong> consacré au mandat, et non du temps personnel.
+        </p>
+        <p>
+          Des crédits d’heures existent pour les élus au CSE, les membres des commissions du CSE, les
+          référents et représentants de proximité, ainsi que pour la section syndicale. Rapprochez-vous
+          de votre section pour connaître ceux de votre site.
+        </p>
+      </div>
+    </div>
+
+    <h3>Demander un congé formation</h3>
+    <ol class="steps">
+      <li>Contactez votre section de site pour valider votre demande de formation (organisme de formation de l’UNSA : le <strong>CEFU</strong>, avec catalogue et agenda des formations).</li>
+      <li>Vous recevez un formulaire de demande à adresser à la RH de votre site <strong>30 jours</strong> avant la formation.</li>
+      <li>L’employeur doit répondre dans les <strong>8 jours</strong>.</li>
+    </ol>
+    <div class="callout">
+      <p><strong>Refus ou report :</strong></p>
+      <ul>
+        <li>Refus uniquement si, après avis conforme du CSE, l’absence a des conséquences préjudiciables pour l’entreprise. Il peut être contesté devant le conseil de prud’hommes (bureau de jugement).</li>
+        <li>Report si le quota d’absences simultanées pour ce congé est atteint.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="travel-title">
+    <h2 id="travel-title">Déplacements pour les négociations</h2>
+    <p>
+      Les frais de déplacement (transport, hébergement, repas) sont entièrement pris en charge. Une
+      fois retenu dans l’équipe, officialisez votre déplacement dans SAP Concur :
+    </p>
+    <ol class="steps">
+      <li>Créez un ordre de mission dans SAP Concur (l’adresse se trouve dans le BeST).</li>
+      <li>Remplissez les champs obligatoires et indiquez une estimation de coût.</li>
+      <li>Soumettez votre demande.</li>
+      <li>Suivez-la et attendez son approbation.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="grow-title">
+    <h2 id="grow-title">Agrandir l’équipe militante</h2>
+    <p>
+      Vous êtes un relais auprès de vos collègues : plus nous sommes nombreux, plus nous sommes
+      entendus. Chaque nouvel adhérent renforce notre capacité à défendre les salariés, à négocier des
+      accords équilibrés et à faire progresser les conditions de travail de tous.
+    </p>
+    <h3>Comment en parler simplement à un collègue ?</h3>
+    <ul class="cards">
+      <li class="card"><h3>Autonome et indépendant</h3><p>L’UNSA n’est liée à aucun parti politique ; seul l’intérêt des salariés guide nos positions.</p></li>
+      <li class="card"><h3>Dialogue et résultats</h3><p>Nous privilégions la négociation pour obtenir des avancées concrètes, et savons nous opposer si nécessaire.</p></li>
+      <li class="card"><h3>Un projet collectif</h3><p>Une équipe engagée, composée de salariés de métiers, générations et parcours différents.</p></li>
+    </ul>
+  </section>
+
+  <section class="band band--navy" aria-labelledby="cta-title">
+    <h2 id="cta-title">Prêt à nous rejoindre ?</h2>
+    <p>À l’UNSA, chacun compte. Chaque adhésion renforce notre capacité à construire des avancées pour tous.</p>
+    <div class="hero__actions">
+      <a class="button button--light" href={url('adherer/')}>Adhérer</a>
+      <a class="button button--outline-light" href={url('contact/')}>Contacter ma section</a>
+    </div>
+  </section>
+</Base>

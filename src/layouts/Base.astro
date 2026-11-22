@@ -43,7 +43,10 @@ const csp = [
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="icon" type="image/png" href={url('img/favicon.png')} />
+    <link rel="apple-touch-icon" href={url('img/apple-touch-icon.png')} />
+    <meta property="og:image" content={new URL(url('img/accueil.webp'), Astro.site)} />
+    <meta name="theme-color" content="#102058" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
     <title>{pageTitle}</title>
   </head>
@@ -52,7 +55,7 @@ const csp = [
     <header class="site-header">
       <div class="container site-header__inner">
         <a class="brand" href={url()}>
-          <img src={url('favicon.svg')} alt="" width="36" height="36" />
+          <img src={url('img/logo.png')} alt="" width="40" height="40" />
           <span>{SITE.title}</span>
         </a>
         <button
@@ -87,7 +90,11 @@ const csp = [
     <footer class="site-footer">
       <div class="container site-footer__inner">
         <div>
-          <p class="brand-footer">{SITE.title}</p>
+          <p class="brand-footer">
+            <img src={url('img/logo.png')} alt="" width="32" height="32" />
+            {SITE.title}
+          </p>
+          <p class="footer-tagline">{SITE.tagline}</p>
           <p>{SITE.address}</p>
           <p><a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a></p>
         </div>
@@ -100,6 +107,7 @@ const csp = [
           <ul class="footer-links">
             <li><a href={url('adherer/')}>Adhérer</a></li>
             <li><a href={url('documents/')}>Espace documents</a></li>
+            <li><a href={url('glossaire/')}>Glossaire syndical</a></li>
             <li><a href={url('mentions-legales/')}>Mentions légales</a></li>
           </ul>
         </div>

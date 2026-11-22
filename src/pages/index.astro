@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import NewsList from '../components/NewsList.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import { SITE, url } from '../config';
+import { ENGAGEMENT_LEVELS } from '../data/livret';
 import { getActualites } from '../data/actualites';
 
 const latest = (await getActualites()).slice(0, 3);
@@ -10,11 +11,49 @@ const latest = (await getActualites()).slice(0, 3);
 
 <Base>
   <section class="hero">
-    <h1>{SITE.title}</h1>
-    <p class="hero__lead">Défendre, informer et accompagner chaque salarié.</p>
-    <div class="hero__actions">
-      <a class="button" href={url('adherer/')}>Adhérer</a>
-      <a class="button button--ghost" href={url('contact/')}>Nous contacter</a>
+    <div>
+      <p class="hero__eyebrow">Syndicat autonome d’entreprise</p>
+      <h1>{SITE.title}</h1>
+      <p class="hero__lead">
+        {SITE.tagline}. Défendre, informer et accompagner chaque salarié de STMicroelectronics en France.
+      </p>
+      <div class="hero__actions">
+        <a class="button" href={url('adherer/')}>Adhérer</a>
+        <a class="button button--ghost" href={url('qui-sommes-nous/')}>Découvrir l’UNSA</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img
+        src={url('img/accueil.webp')}
+        alt="Illustration d’accueil du livret UNSA STMicroelectronics"
+        width="1400"
+        height="1120"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="split" aria-labelledby="welcome-title">
+    <figure class="figure">
+      <img
+        src={url('img/avatar.webp')}
+        alt="Notre avatar UNSA STMicroelectronics vous accueille"
+        width="1200"
+        height="800"
+        loading="lazy"
+      />
+    </figure>
+    <div>
+      <h2 id="welcome-title">Bienvenue parmi nous</h2>
+      <p>
+        En rejoignant notre organisation, vous faites le choix de vous engager dans une démarche
+        collective fondée sur la <strong>solidarité</strong>, l’<strong>écoute</strong> et la <strong>défense des droits</strong> de chacun.
+      </p>
+      <p>
+        Votre adhésion renforce notre capacité à agir, à représenter les salariés et à porter leur
+        voix au quotidien. Tout au long de votre parcours, nous serons à vos côtés pour vous
+        informer, vous accompagner et répondre à vos questions.
+      </p>
     </div>
   </section>
 
@@ -23,17 +62,61 @@ const latest = (await getActualites()).slice(0, 3);
     <ul class="cards">
       <li class="card">
         <h3>Défendre</h3>
-        <p>Nous représentons les salariés et défendons leurs droits, individuellement et collectivement.</p>
+        <p>
+          Nous représentons les salariés auprès de la Direction, au CSE comme dans les négociations
+          d’accords, et nous leur apportons une aide juridique.
+        </p>
       </li>
       <li class="card">
         <h3>Informer</h3>
-        <p>Nous partageons l’actualité sociale, les accords et les documents utiles.</p>
+        <p>Nous partageons l’actualité sociale, les accords signés et les documents utiles à chacun.</p>
       </li>
       <li class="card">
         <h3>Accompagner</h3>
-        <p>Nous vous conseillons et vous accompagnons dans vos démarches.</p>
+        <p>Nous vous conseillons, vous formons et vous accompagnons dans toutes vos démarches.</p>
       </li>
     </ul>
+  </section>
+
+  <section class="split" aria-labelledby="together-title">
+    <div>
+      <h2 id="together-title">Un projet collectif avant tout</h2>
+      <p>
+        L’UNSA n’est pas l’affaire d’une seule personne : c’est une équipe engagée, composée de
+        salariés de différents métiers, générations et parcours.
+      </p>
+      <p>
+        <strong>Indépendante, constructive, proche des salariés</strong> : nous privilégions la
+        négociation pour obtenir des avancées concrètes, sans lien avec aucun parti politique.
+      </p>
+      <p><a href={url('qui-sommes-nous/')}>En savoir plus sur notre organisation →</a></p>
+    </div>
+    <figure class="figure">
+      <img
+        src={url('img/ensemble.webp')}
+        alt="Salariés et militants réunis dans la rue, tous ensemble"
+        width="561"
+        height="449"
+        loading="lazy"
+      />
+    </figure>
+  </section>
+
+  <section aria-labelledby="levels-title">
+    <div class="section-head">
+      <h2 id="levels-title">Quatre niveaux d’implication</h2>
+      <a href={url('sengager/')}>Comment s’engager →</a>
+    </div>
+    <ol class="steps steps--levels">
+      {
+        ENGAGEMENT_LEVELS.map((level) => (
+          <li>
+            <h3>{level.level}</h3>
+            <p><span class="tag">{level.role}</span></p>
+          </li>
+        ))
+      }
+    </ol>
   </section>
 
   <section aria-labelledby="news-title">
@@ -44,13 +127,16 @@ const latest = (await getActualites()).slice(0, 3);
     <NewsList items={latest} />
   </section>
 
-  <section class="band" aria-labelledby="members-title">
+  <section class="band band--navy" aria-labelledby="members-title">
     <h2 id="members-title">Espace adhérents</h2>
     <p>
       Les adhérents accèdent aux documents avec leur compte Google et reçoivent un email à chaque
       nouveau document.
     </p>
-    <a class="button" href={url('documents/')}>Accéder aux documents</a>
+    <div class="hero__actions">
+      <a class="button button--light" href={url('documents/')}>Accéder aux documents</a>
+      <a class="button button--outline-light" href={url('adherer/')}>Adhérer</a>
+    </div>
   </section>
 
   <section aria-labelledby="social-title">
