@@ -37,7 +37,7 @@ const csp = [
     <meta charset="utf-8" />
     <meta http-equiv="Content-Security-Policy" content={csp} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=1200, minimum-scale=0.25, maximum-scale=5, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
     <meta name="description" content={description} />
     <meta property="og:title" content={pageTitle} />
@@ -58,15 +58,6 @@ const csp = [
           <img src={url('img/logo.png')} alt="" width="40" height="40" />
           <span>{SITE.title}</span>
         </a>
-        <button
-          type="button"
-          class="menu-toggle"
-          aria-expanded="false"
-          aria-controls="main-nav"
-        >
-          <span class="menu-toggle__bar" aria-hidden="true"></span>
-          <span class="visually-hidden">Menu</span>
-        </button>
         <nav id="main-nav" class="main-nav" aria-label="Menu principal">
           <ul>
             {
@@ -116,16 +107,3 @@ const csp = [
     </footer>
   </body>
 </html>
-
-<script>
-  // Bundled by Astro into an external file, which keeps it CSP-compliant.
-  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
-  const nav = document.querySelector<HTMLElement>('#main-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!open));
-      nav.classList.toggle('is-open', !open);
-    });
-  }
-</script>
