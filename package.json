@@ -11,9 +11,12 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "test:apps-script": "node --test apps-script/Code.test.mjs",
     "audit": "npm audit --omit=dev --audit-level=high"
   },
   "dependencies": {
+    "@firebase/app": "^0.16.7",
+    "@firebase/messaging": "^0.13.3",
     "astro": "^7.4.13",
     "simple-icons": "^16.38.0"
   },

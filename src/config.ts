@@ -30,6 +30,32 @@ export const NAV: readonly NavItem[] = [
   { label: 'Contact', path: 'contact/' },
 ];
 
+export interface PwaConfig {
+  // URL of the deployed Apps Script web app (ends with /exec). Empty = documents area disabled.
+  readonly apiUrl: string;
+  // Public Firebase web-app settings (not secrets). Leave empty to disable push notifications.
+  readonly firebase: {
+    readonly apiKey: string;
+    readonly authDomain: string;
+    readonly projectId: string;
+    readonly messagingSenderId: string;
+    readonly appId: string;
+    readonly vapidKey: string;
+  };
+}
+
+export const PWA: PwaConfig = {
+  apiUrl: '',
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    messagingSenderId: '',
+    appId: '',
+    vapidKey: '',
+  },
+};
+
 export type SocialNetwork = 'facebook' | 'x' | 'instagram' | 'linkedin' | 'youtube' | 'whatsapp';
 
 export interface SocialLink {

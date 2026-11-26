@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE } from '../config';
+import { SITE, url } from '../config';
 ---
 
 <Base title="Mentions légales">
@@ -16,9 +16,11 @@ import { SITE } from '../config';
     <p>GitHub Pages — GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
     <h2>Données personnelles</h2>
     <p>
-      Ce site ne dépose aucun cookie et ne collecte aucune donnée. L’espace documents est hébergé par
-      Google Drive : les adhérents y accèdent avec leur compte Google. Pour exercer vos droits (accès,
-      rectification, suppression), écrivez à <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+      Ce site ne dépose aucun cookie. L’espace documents fonctionne avec des clés d’accès anonymes, sans
+      nom ni email ; les documents sont stockés sur Google Drive et les notifications envoyées via Google
+      Firebase. Le détail (données, durées, sous-traitants, droits) figure dans la
+      <a href={url('confidentialite/')}>politique de confidentialité</a>. Pour exercer vos droits, écrivez à
+      <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
     </p>
   </div>
 </Base>

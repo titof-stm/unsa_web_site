@@ -1,36 +1,83 @@
 ---
 import Base from '../layouts/Base.astro';
-import { documentFolders } from '../data/documents';
 import { SITE, url } from '../config';
 ---
 
-<Base title="Documents" description="Espace documents réservé aux adhérents.">
-  <h1>Espace documents</h1>
-  <p class="note">
-    Les documents sont stockés dans Google Drive et réservés aux adhérents. Google vous demandera de
-    vous connecter avec le compte Google que vous nous avez communiqué. Vous recevez aussi un email à
-    chaque nouveau document.
+<Base title="Documents" description="Espace documents réservé aux adhérents et invités, accessible avec une clé d’accès.">
+  <h1 class="page-title">Espace documents</h1>
+  <p class="page-lead">
+    Saisissez la clé d’accès remise par le syndicat pour consulter les documents. Aucun compte et aucune
+    information personnelle ne sont demandés.
   </p>
-  <ul class="cards">
-    {
-      documentFolders.map((folder) => (
-        <li class="card">
-          <h2>{folder.title}</h2>
-          <p>{folder.description}</p>
-          <a class="button" href={folder.url} target="_blank" rel="noopener noreferrer">
-            Ouvrir dans Google Drive
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-  <h2>Vous n’avez pas accès ?</h2>
-  <ul class="prose">
-    <li>Vérifiez que vous êtes connecté avec le <strong>bon compte Google</strong>.</li>
-    <li>
-      Sinon, écrivez-nous à <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> en indiquant
-      l’adresse de votre compte Google. Nous vous ajouterons au groupe des adhérents.
-    </li>
-    <li>Pas encore adhérent ? <a href={url('adherer/')}>Adhérez ici</a>.</li>
-  </ul>
+  <p class="status offline-badge" role="status">Vous êtes hors connexion : seuls les documents enregistrés sur cet appareil sont disponibles.</p>
+
+  <noscript><p class="callout">JavaScript est nécessaire pour accéder aux documents.</p></noscript>
+
+  <p id="doc-unconfigured" class="callout" hidden>
+    L’espace documents est en cours de mise en service. Revenez bientôt ou
+    <a href={`mailto:${SITE.contactEmail}`}>contactez-nous</a>.
+  </p>
+
+  <section id="doc-login" hidden>
+    <form id="login-form" class="panel" autocomplete="off" novalidate>
+      <div class="field">
+        <label for="key">Clé d’accès</label>
+        <input
+          id="key"
+          name="key"
+          type="password"
+          autocomplete="off"
+          autocapitalize="characters"
+          autocorrect="off"
+          spellcheck="false"
+          maxlength="64"
+          required
+        />
+        <span class="hint">Exemple : ABCD-EFGH-JKMN-PQRS-TVWX-YZ23-4567. Elle figure sur votre carte et dans son QR code.</span>
+      </div>
+      <label class="check"><input type="checkbox" id="show-key" /> <span>Afficher la clé</span></label>
+      <label class="check">
+        <input type="checkbox" id="remember" />
+        <span>Rester connecté sur cet appareil (30 jours). À éviter sur un appareil partagé.</span>
+      </label>
+      <button class="button" type="submit">Accéder aux documents</button>
+      <p id="login-status" class="status" role="status" aria-live="polite"></p>
+    </form>
+    <h2>Vous n’avez pas de clé ?</h2>
+    <ul class="prose">
+      <li>Les clés sont remises <strong>en main propre</strong> par les représentants UNSA, sur une carte.</li>
+      <li>Nous ne demandons ni nom ni adresse email : la clé n’est reliée à aucune identité.</li>
+      <li>Pas encore adhérent ? <a href={url('adherer/')}>Adhérez ici</a>, ou <a href={url('contact/')}>contactez-nous</a>.</li>
+    </ul>
+  </section>
+
+  <section id="doc-app" hidden>
+    <div class="actions">
+      <button type="button" class="button button--ghost button--small" id="logout">Se déconnecter et effacer</button>
+      <a class="button button--ghost button--small" href={url('parametres/')}>Notifications et application</a>
+    </div>
+    <ul id="sets" class="cards"></ul>
+    <div id="browser" hidden>
+      <nav id="crumbs" class="crumbs" aria-label="Chemin du dossier"></nav>
+      <ul id="listing" class="doc-list"></ul>
+    </div>
+    <p id="app-status" class="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section id="doc-offline" hidden>
+    <h2>Disponibles hors connexion sur cet appareil</h2>
+    <ul id="offline-list" class="doc-list"></ul>
+  </section>
+
+  <dialog id="viewer" class="viewer" aria-label="Aperçu du document">
+    <div class="viewer__bar">
+      <p id="viewer-title" class="viewer__title"></p>
+      <button type="button" class="button button--small" id="viewer-close">Fermer</button>
+    </div>
+    <div id="viewer-body" class="viewer__body"></div>
+  </dialog>
 </Base>
+
+<script>
+  import '../scripts/documents';
+</script>

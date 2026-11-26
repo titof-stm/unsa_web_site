@@ -6,3 +6,4 @@ dist/
 !.env.example
 .clasp.json
 .clasprc.json
+COMPARATIF_*.md

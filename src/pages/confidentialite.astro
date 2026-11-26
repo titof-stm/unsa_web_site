@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, url } from '../config';
+---
+
+<Base title="Confidentialité" description="Comment l’UNSA protège vos données : clés d’accès anonymes, notifications sans identité.">
+  <h1 class="page-title">Politique de confidentialité</h1>
+  <p class="page-lead">
+    L’espace documents est conçu pour que personne, pas même les administrateurs, ne puisse savoir qui est
+    adhérent ou qui consulte quoi.
+  </p>
+  <div class="prose">
+    <h2>Responsable du traitement</h2>
+    <p>
+      {SITE.title} — {SITE.address}. Contact : <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+    </p>
+
+    <h2>Ce que nous ne collectons pas</h2>
+    <ul>
+      <li>Aucun nom, email, téléphone ou matricule n’est lié à une clé d’accès.</li>
+      <li>Aucun cookie, aucun outil de mesure d’audience, aucun traceur publicitaire.</li>
+      <li>Aucun historique de connexion par clé, aucune adresse IP enregistrée par notre application.</li>
+      <li>Les notifications ne contiennent aucun nom de document ni information personnelle.</li>
+    </ul>
+
+    <h2>Ce qui est conservé</h2>
+    <table>
+      <thead><tr><th>Donnée</th><th>Où</th><th>Durée</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Empreinte cryptographique de la clé, numéro de lot et dossiers autorisés</td>
+          <td>Tableur privé du syndicat (Google)</td>
+          <td>Durée du lot, puis suppression sous 30 jours</td>
+        </tr>
+        <tr>
+          <td>Session d’accès, préférences, documents enregistrés hors connexion</td>
+          <td>Votre appareil uniquement</td>
+          <td>12 heures ou 30 jours selon votre choix ; documents 30 jours au plus</td>
+        </tr>
+        <tr>
+          <td>Identifiant d’appareil pour les notifications (si vous les activez)</td>
+          <td>Google Firebase, rattaché à un groupe de notification et non à une personne</td>
+          <td>Jusqu’à désactivation, déconnexion ou expiration du lot</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Base légale</h2>
+    <p>
+      Intérêt légitime du syndicat à donner accès à ses documents à ses adhérents et invités ; pour les
+      adhérents, traitement effectué par un organisme syndical dans le cadre de ses activités légitimes
+      (article 9.2.d du RGPD), sans communication à des tiers. Les notifications reposent sur votre
+      consentement.
+    </p>
+
+    <h2>Sous-traitants et transferts</h2>
+    <p>
+      Hébergement du site : GitHub Pages. Documents, tableur et envoi des notifications : Google (Drive, Apps
+      Script, Firebase Cloud Messaging), dans le cadre de ses clauses contractuelles types pour les transferts
+      hors de l’Union européenne. Ces services voient techniquement l’adresse IP de votre appareil, comme tout
+      site Internet.
+    </p>
+
+    <h2>Vos droits</h2>
+    <p>
+      Parce que le système ne détient aucune donnée qui vous identifie, il ne peut pas retrouver « vos »
+      données (article 11 du RGPD). Vous gardez la maîtrise sur votre appareil :
+    </p>
+    <ul>
+      <li>
+        <a href={url('parametres/')}>Se déconnecter et tout effacer</a> supprime la session, l’abonnement aux
+        notifications et les documents hors connexion.
+      </li>
+      <li>Perte ou vol de la carte : communiquez le <strong>numéro imprimé sur la carte</strong> pour désactiver la clé, sans révéler votre identité.</li>
+      <li>
+        Questions ou demandes : <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>. Réponse sous un
+        mois. Vous pouvez aussi saisir la <a href="https://www.cnil.fr/fr/plaintes" rel="noopener noreferrer">CNIL</a>.
+      </li>
+    </ul>
+
+    <h2>Conseils pour préserver votre anonymat</h2>
+    <ul>
+      <li>Utilisez de préférence un appareil personnel et un réseau personnel (pas le réseau de l’entreprise).</li>
+      <li>Ne partagez pas votre clé et ne la photographiez pas.</li>
+      <li>Activez le mode discret des notifications si votre écran est visible par d’autres.</li>
+    </ul>
+  </div>
+</Base>

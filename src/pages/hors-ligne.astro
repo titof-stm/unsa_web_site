@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../config';
+---
+
+<Base title="Hors connexion" description="Vous êtes hors connexion.">
+  <h1 class="page-title">Vous êtes hors connexion</h1>
+  <p class="page-lead">Cette page n’a pas été enregistrée sur votre appareil. Reconnectez-vous à Internet pour la consulter.</p>
+  <div class="actions">
+    <a class="button" href={url()}>Retour à l’accueil</a>
+    <a class="button button--ghost" href={url('documents/')}>Documents enregistrés</a>
+  </div>
+</Base>

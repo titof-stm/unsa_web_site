@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../config';
+---
+
+<Base title="Application et notifications" description="Installer l’application UNSA, activer les notifications et gérer les données de cet appareil.">
+  <h1 class="page-title">Application et notifications</h1>
+  <p class="page-lead">Installez le site comme une application et recevez une alerte à chaque nouveau document.</p>
+
+  <section class="panel" aria-labelledby="install-title">
+    <h2 id="install-title">Installer l’application</h2>
+    <p id="install-state">Vérification…</p>
+    <div class="actions">
+      <button type="button" class="button" id="install-btn" hidden>Installer l’application</button>
+    </div>
+    <div id="ios-help" hidden>
+      <p><strong>Sur iPhone et iPad (iOS 16.4 ou plus) :</strong></p>
+      <ol>
+        <li>Ouvrez ce site dans <strong>Safari</strong>.</li>
+        <li>Touchez le bouton <strong>Partager</strong> (carré avec une flèche).</li>
+        <li>Choisissez <strong>Sur l’écran d’accueil</strong>, puis <strong>Ajouter</strong>.</li>
+        <li>Ouvrez l’application depuis son icône : les notifications ne fonctionnent qu’ainsi sur iOS.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="push-title">
+    <h2 id="push-title">Notifications</h2>
+    <p>
+      Recevez une alerte quand un nouveau document est disponible. <strong>Aucune information ne vous
+      identifie</strong> : le service ne sait pas qui vous êtes, seulement qu’un appareil attend les nouveautés. Le
+      texte de l’alerte reste générique. L’envoi est assuré par Google Firebase (transferts possibles hors de
+      l’Union européenne). Vous pouvez désactiver les notifications à tout moment.
+    </p>
+    <p id="push-state" class="status" role="status" aria-live="polite">Vérification…</p>
+    <label class="check">
+      <input type="checkbox" id="discreet" />
+      <span>Mode discret : l’alerte n’affiche ni « UNSA » ni logo sur l’écran de verrouillage.</span>
+    </label>
+    <div class="actions">
+      <button type="button" class="button" id="push-enable" hidden>Activer les notifications</button>
+      <button type="button" class="button button--ghost" id="push-disable" hidden>Désactiver les notifications</button>
+    </div>
+  </section>
+
+  <section class="panel" aria-labelledby="data-title">
+    <h2 id="data-title">Données de cet appareil</h2>
+    <p>
+      Ce site ne dépose aucun cookie. Il conserve sur votre appareil uniquement votre session d’accès, vos
+      préférences et les documents que vous avez rendus disponibles hors connexion.
+    </p>
+    <div class="actions">
+      <button type="button" class="button button--ghost" id="wipe">Se déconnecter et tout effacer</button>
+    </div>
+    <p id="wipe-state" class="status" role="status" aria-live="polite"></p>
+    <p><a href={url('confidentialite/')}>Politique de confidentialité</a></p>
+  </section>
+</Base>
+
+<script>
+  import '../scripts/settings';
+</script>

@@ -26,6 +26,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check
+      - run: npm run test:apps-script
       - run: npm audit --omit=dev --audit-level=high
       - run: npm run build
       - uses: actions/configure-pages@v6
