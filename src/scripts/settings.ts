@@ -1,4 +1,5 @@
 import { PWA } from '../config';
+import { isIos, isStandalone } from '../lib/install';
 import { disablePush, enablePush, pushConfigured, pushSupported } from '../lib/push';
 import { getStoredFcmToken, isDiscreet, loadSession, setDiscreet, wipeLocalData } from '../lib/session';
 
@@ -16,11 +17,6 @@ const enableButton = $<HTMLButtonElement>('push-enable');
 const disableButton = $<HTMLButtonElement>('push-disable');
 const discreet = $<HTMLInputElement>('discreet');
 
-const isIos = (): boolean =>
-  /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-const isStandalone = (): boolean =>
-  window.matchMedia('(display-mode: standalone)').matches ||
-  (navigator as Navigator & { standalone?: boolean }).standalone === true;
 
 function renderInstall(): void {
   installButton.hidden = true;

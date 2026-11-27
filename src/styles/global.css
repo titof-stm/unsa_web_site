@@ -489,7 +489,8 @@ main > section { margin-block: calc(var(--space) * 2); }
 .viewer__title { margin: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .viewer__body { flex: 1 1 auto; display: flex; min-height: 0; }
 .viewer iframe, .viewer img { flex: 1 1 auto; width: 100%; min-height: 0; border: 0; object-fit: contain; background: var(--surface); }
-.update-banner {
+.update-banner,
+.install-banner {
   position: fixed;
   inset-inline: 0.75rem;
   inset-block-end: max(0.75rem, env(safe-area-inset-bottom));
@@ -508,6 +509,9 @@ main > section { margin-block: calc(var(--space) * 2); }
   box-shadow: var(--shadow);
   p { margin: 0; }
 }
+.install-banner { z-index: 15; }
+.install-banner__actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.nav-install { display: flex; align-items: center; }
 .offline-badge { display: none; }
 html[data-offline] .offline-badge { display: inline-block; }
 
